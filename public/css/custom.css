@@ -112,6 +112,9 @@ input[type=checkbox] { width: auto }
 
 @media only screen and (max-width: 900px) {
 
+    .navlink {
+        margin-left: 10px;
+    }
     
 
     .display-3{
