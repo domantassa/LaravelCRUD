@@ -1,0 +1,227 @@
+:root {
+    --blacky: rgba(11, 12, 16, 0.884);
+    --blacky-light: #1F2833;
+    --whity: rgb(154, 154, 154);
+    --bluy: rgb(0, 0, 0);
+    --bluy-dark: #45A29E;
+}
+
+.container {
+
+    background-color: white;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    background-color: var();
+    padding: 1rem;
+    padding-bottom: 9rem;
+    box-shadow: 0px 0px 20px 0px rgb(27, 25, 25);
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-image: url("../images/background.jpg");
+    color: var(--whity);
+    font-family: 'Quicksand';
+    min-height: 100%;
+
+}
+
+td:hover {
+    font-weight: bold;
+}
+
+th:hover {
+    font-weight: bold;
+}
+
+.btn:hover {
+    font-weight: bold;
+    background-color: var(--bluy-dark);
+}
+
+.col {
+    margin-top: 2rem;
+}
+
+table {
+    display: table !important;
+    vertical-align: middle;
+}
+
+input[type=checkbox] { width: auto }
+
+.create {
+    float: right;
+}
+
+.tdNumber {
+    text-align: center;
+}
+
+.icons {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.navbar {
+    background-color: white;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+}
+
+.nav-link {
+    
+    color: var(--bluy) !important;
+}
+
+.display-3{
+    font-size:65px;
+}
+
+
+.nav-item1 {
+    animation: createBox 0.55s;
+}
+
+.nav-item2 {
+    animation: createBox 0.55s;
+}
+
+.nav-item3 {
+    animation: createBox 0.55s;
+}
+
+
+@keyframes createBox {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+.nav-link:hover {
+    
+    font-weight: bold;
+    color: var(--bluy-dark) !important;
+}
+
+@media only screen and (max-width: 900px) {
+
+    .icon-bar {
+        display: none;
+    }
+}
+
+
+
+@media only screen and (min-width: 900px) {
+
+    .navbar-collapse {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.display-3 {
+    color: var(--bluy);
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.nav-link {
+    transition: all .2s ease-in-out;
+}
+
+.nav-link:hover {
+    transform: scale(1.1);
+}
+
+.fadein {
+    opacity: 0;
+    transition: opacity 1s;
+
+}
+
+.loaded {
+    opacity: 1 !important;
+}
+
+.th {
+    vertical-align: middle;
+}
+
+.dinamicForm {
+    margin-top:2rem;
+    padding: 0;
+}
+
+.submitbtn {
+    margin-top: 2rem;
+    padding:0;
+}
+
+.hidden {
+    display: none;
+}
+
+.deleteChild {
+    padding:0px;
+    margin-left: 5px;
+}
+
+.dropdown-item:hover {
+    background-color: white;
+}
+
+.fixed {
+    text-align: left;
+    width: 2rem;
+}
+
+.offon {
+    text-align: right;
+    width: 2rem;
+}
+
+.icon-bar {
+    box-shadow: 0px 0px 20px 0px rgb(213, 212, 212);
+    position: fixed;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  
+  .icon-bar a {
+    display: block;
+    text-align: center;
+    padding: 16px;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 20px;
+  }
