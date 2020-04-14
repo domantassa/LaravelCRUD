@@ -112,15 +112,25 @@ input[type=checkbox] { width: auto }
 
 @media only screen and (max-width: 900px) {
 
+    .display-3{
+        font-size:35px;
+    }
+
     .icon-bar {
         display: none;
     }
+
+    
 }
 
 
 
 @media only screen and (min-width: 900px) {
 
+    .nav-link {
+        transition: all .2s ease-in-out;
+    }
+    
     .navbar-collapse {
         display: flex;
         align-items: center;
@@ -154,9 +164,7 @@ input[type=checkbox] { width: auto }
     background: #555;
 }
 
-.nav-link {
-    transition: all .2s ease-in-out;
-}
+
 
 .nav-link:hover {
     transform: scale(1.1);
