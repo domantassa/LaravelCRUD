@@ -94,7 +94,7 @@
         <button onclick="$('.fixed').toggleClass('hidden')" type="button" class="btn offon"><i class="fa fa-bars"></i></button>
         <button onclick="window.location.href='/city/create'" type="button" type="button" class="btn fixed">PN1 #1</button>
         <button onclick="window.location.href='/office/create'" type="button" type="button" class="btn fixed">PP1 #1</button>
-        <button onclick="window.location.href='/application-order'" type="button" type="button" class="btn fixed">PP1 #2</button>
+        <button onclick="window.location.href='/application-order/create'" type="button" type="button" class="btn fixed">PP1 #2</button>
         <button onclick="window.location.href='/client/create'" type="button" type="button" class="btn fixed">SPa #1</button>
         <button onclick="window.location.href='/software-developer/create'" type="button" type="button" class="btn fixed">SPva #1</button>
 
