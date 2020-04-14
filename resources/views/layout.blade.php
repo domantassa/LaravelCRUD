@@ -27,7 +27,6 @@
 
 </head>
 <body class="fadein">
-
 <nav class="navbar navbar-expand-lg navbar-dark">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
   <i class="fa fa-bars" style="color:#000; font-size:28px;"></i>
@@ -86,17 +85,17 @@
 <div class="icon-bar">
       <div class="btn-group-vertical">
         
-        <button onclick="window.location.href='/city'" type="button" class="btn fixed">SF #1</button>
-        <button onclick="window.location.href='/client'" type="button" type="button" class="btn fixed">SF #2</button>
-        <button onclick="window.location.href='/application-order'" type="button" type="button" class="btn fixed">SF #3</button>
-        <button onclick="window.location.href='/software-developer'" type="button" type="button" class="btn fixed">SF #4</button>
-        <button onclick="window.location.href='/office'" type="button" type="button" class="btn fixed">SF #5</button>
-        <button onclick="$('.fixed').toggleClass('hidden')" type="button" class="btn offon"><i class="fa fa-bars"></i></button>
-        <button onclick="window.location.href='/city/create'" type="button" type="button" class="btn fixed">PN1 #1</button>
-        <button onclick="window.location.href='/office/create'" type="button" type="button" class="btn fixed">PP1 #1</button>
-        <button onclick="window.location.href='/application-order/create'" type="button" type="button" class="btn fixed">PP1 #2</button>
-        <button onclick="window.location.href='/client/create'" type="button" type="button" class="btn fixed">SPa #1</button>
-        <button onclick="window.location.href='/software-developer/create'" type="button" type="button" class="btn fixed">SPva #1</button>
+        <button onclick="window.location.href='/city'" type="button" class="btn fixed hidden">SF #1</button>
+        <button onclick="window.location.href='/client'" type="button" type="button" class="btn fixed hidden">SF #2</button>
+        <button onclick="window.location.href='/application-order'" type="button" type="button" class="btn fixed hidden">SF #3</button>
+        <button onclick="window.location.href='/software-developer'" type="button" type="button" class="btn fixed hidden">SF #4</button>
+        <button onclick="window.location.href='/office'" type="button" type="button" class="btn fixed hidden">SF #5</button>
+        <button onclick="toggleSidebar()" type="button" class="btn offon"><i class="fa fa-bars"></i></button>
+        <button onclick="window.location.href='/city/create'" type="button" type="button" class="btn fixed hidden">PN1 #1</button>
+        <button onclick="window.location.href='/office/create'" type="button" type="button" class="btn fixed hidden">PP1 #1</button>
+        <button onclick="window.location.href='/application-order/create'" type="button" type="button" class="btn fixed hidden">PP1 #2</button>
+        <button onclick="window.location.href='/client/create'" type="button" type="button" class="btn fixed hidden">SPa #1</button>
+        <button onclick="window.location.href='/software-developer/create'" type="button" type="button" class="btn fixed hidden">SPva #1</button>
 
       </div>
 </div>
@@ -140,11 +139,52 @@ $(window).ready(function (){
            
         }
         return false;
-    })
+    })});
+
+    function toggleSidebar() {
+      $('.fixed').toggleClass('hidden');
+      if(readCookie('ppkcookie'))
+      {
+        
+        eraseCookie('ppkcookie');
+      }
+      else
+      {
+        createCookie('ppkcookie','sidebarToggleCookie',7);
+      }
+       
+    }
     
 
-   
-    
+    function createCookie(name,value,days) {
+	if (days) {
+		var date = new Date();
+		date.setTime(date.getTime()+(days*24*60*60*1000));
+		var expires = "; expires="+date.toGMTString();
+	}
+	else var expires = "";
+	document.cookie = name+"="+value+expires+"; path=/";
+}
+
+function readCookie(name) {
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
+
+function eraseCookie(name) {
+	createCookie(name,"",-1);
+}
+
+
+$(document).ready (function () {
+  if(readCookie('ppkcookie'))
+    $('.fixed').toggleClass('hidden');
 });
 </script>
 </body>
