@@ -112,6 +112,10 @@ input[type=checkbox] { width: auto }
 
 @media only screen and (max-width: 900px) {
 
+    .nav-link:hover {
+        transform: scale(1.1);
+    }
+
     .display-3{
         font-size:35px;
     }
@@ -166,9 +170,7 @@ input[type=checkbox] { width: auto }
 
 
 
-.nav-link:hover {
-    transform: scale(1.1);
-}
+
 
 .fadein {
     opacity: 0;
