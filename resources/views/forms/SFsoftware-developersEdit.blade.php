@@ -56,6 +56,23 @@
     @endforeach
   </select>
   </div>
+  @foreach ($application_orders as $application_order)
+   <div class="OrdersBox">
+    <div class="form-group OrdersGroup" >
+      <div class="input-group mb-3 form-group">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="Office">All orders</label>
+      </div>
+      <select class="custom-select" name="application_orders[]">
+        @foreach($application_orders as $application_order)
+        <option value="f">f</option>
+        @endforeach
+      </select>
+      <a  href="#" title="" class="removeChild"><button type="button"  class="ml-2 btn">Delete order</button></a>
+      </div>  
+    </div>
+  </div>
+  @endforeach
   <button style="display:block" type="submit" class="btn ">Submit</button>
 </form>
 

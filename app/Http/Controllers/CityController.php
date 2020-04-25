@@ -85,10 +85,7 @@ class CityController extends Controller
         else
             $BussCenter = 1;
         
-        
-        DB::table('city')
-        ->where('id_City', $id)
-        ->update(['Number_of_residents' => $request->Number_of_residents, 'Area_square_km' => $request->Area_square_km, 'NAME' => $request->NAME, 'Mayor' => $request->Mayor, 'Has_bussiness_center' => $BussCenter, 'Country' => $request->Country]);
+        DB::update('update city set Number_of_residents = ?, Area_square_km = ?, NAME = ?, Mayor = ?, Has_bussiness_center = ?, Country = ? where id_City = ?', [$request->Number_of_residents, $request->Area_square_km, $request->NAME, $request->Mayor, $BussCenter, $request->Country, $id]);
         return redirect('/city')->with('success', 'Record about city updated!');
     }
 
@@ -100,7 +97,7 @@ class CityController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('city')->where('id_City',$id)->delete();
+        DB::delete('delete from city where id_City = ?', [$id]);
         return redirect('/city')->with('success', 'Record about city deleted!');
     }
 }

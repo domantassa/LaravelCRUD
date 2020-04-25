@@ -58,9 +58,11 @@ class Application_orderController extends Controller
      */
     public function edit($id)
     {
+        dd($id);
+        $allApplication_orders = DB::select('select * from application_order');
         $application_order = DB::select('select * from application_order where id_Application_order = :id', ['id' => $id]);
         $clients = DB::select('select * from client');
-        return view('forms.SFapplication-orderEdit', ['application_order' => $application_order, 'clients' => $clients]);
+        return view('forms.SFapplication-orderEdit', ['application_orders' => $allApplication_orders, 'clients' => $clients, 'order' => $application_order]);
     }
 
     /**
@@ -81,9 +83,7 @@ class Application_orderController extends Controller
             'Development_methodology'=>'required',
             'fk_Clientid_Client'=>'required',
         ]);
-        DB::table('application_order')
-        ->where('id_Application_order', $id)
-        ->update(['Started_at' => $request->Started_at, 'End_term' => $request->End_term, 'NAME' => $request->NAME, 'Price' => $request->Price, 'Development_software' => $request->Development_software, 'Development_methodology' => $request->Development_methodology , 'fk_Clientid_Client' => $request->fk_Clientid_Client]);
+        DB::update('update application_order set Started_at = ?, End_term = ?, NAME = ?, Price = ?, Development_software = ? where id_Application_order = ?', [$request->Started_at, $request->End_term, $request->NAME, $request->Price, $request->Development_software, $id]);
         return redirect('/application-order')->with('success', 'Record about application_order updated!');
     }
 
@@ -95,7 +95,7 @@ class Application_orderController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('application_order')->where('id_Application_order',$id)->delete();
+        DB::delete('delete from application_order where id_Application_order = ?', [$id]);
         return redirect('/application-order')->with('success', 'Record about application order deleted!');
     }
 }

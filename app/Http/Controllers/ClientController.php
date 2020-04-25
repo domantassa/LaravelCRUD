@@ -89,9 +89,7 @@ class ClientController extends Controller
             'Phone'=>'required',
             'Amount_of_orders'=>'required',
         ]);
-        DB::table('client')
-        ->where('id_Client', $id)
-        ->update(['NAME' => $request->NAME, 'Last_name' => $request->Last_name, 'Email' => $request->Email, 'Phone' => $request->Phone, 'Amount_of_orders' => $request->Amount_of_orders]);
+        DB::update('update client set NAME = ?, Last_name = ?, Email = ?, Phone = ?, Amount_of_orders = ? where id_Client = ?', [$request->NAME, $request->Last_name, $request->Email, $request->Phone, $request->Amount_of_orders, $id]);
         return redirect('/')->with('success', 'Client updated!');
     }
 
@@ -103,7 +101,11 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('client')->where('id_Client',$id)->delete();
+        
+        DB::delete('delete from web_application_order where fk_Clientid_Client = ?', [$id]);
+        DB::delete('delete from graphical_design_order where fk_Clientid_Client = ?', [$id]);
+        DB::delete('delete from application_order where fk_Clientid_Client = ?', [$id]);
+        DB::delete('delete from client where id_Client = ?', [$id]);
         return redirect('/')->with('success', 'Client deleted!');
     }
 }

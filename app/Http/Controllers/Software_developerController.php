@@ -78,9 +78,13 @@ class Software_developerController extends Controller
      */
     public function edit($id)
     {
-        $offices = DB::select('select * from office');
+        $hasApplication_orders = DB::select('select * from has_application_order where fk_Software_developerid_Software_developer = :id', ['id' => $id]);
+        dd($hasApplication_orders);
+        //fk_Application_orderid_Appliation_order
+        //$myOrders = DB::select('select * from application_order where id_Application_order = :id', ['id' => $id]);
+        //$offices = DB::select('select * from office');
         $software_developer = DB::select('select * from software_developer where id_Software_developer = :id', ['id' => $id]);
-        return view('forms.SFsoftware-developersEdit', ['software_developer' => $software_developer, 'offices' => $offices]);
+        return view('forms.SFsoftware-developersEdit', ['software_developer' => $software_developer, 'offices' => $offices, 'application_orders' => $application_orders]);
     }
 
     /**
@@ -101,9 +105,7 @@ class Software_developerController extends Controller
             'Best_known_language'=>'required',
             'fk_Officeid_Office'=>'required',
         ]);
-        DB::table('software_developer')
-        ->where('id_Software_developer', $id)
-        ->update(['NAME' => $request->NAME, 'Last_name' => $request->Last_name, 'Email' => $request->Email, 'Phone' => $request->Phone, 'Experience' => $request->Experience, 'Best_known_language' => $request->Best_known_language, 'fk_Officeid_Office' => $request->fk_Officeid_Office]);
+        DB::update('update software_developer set NAME = ?, Last_name = ?, Email = ?, Phone = ?, Experience = ?, Best_known_language = ?, fk_Officeid_Office = ? where id_Software_developer = ?', [$request->NAME, $request->Last_name, $request->Email, $request->Phone, $request->Experience, $request->Best_known_language, $request->fk_Officeid_Office, $id]);
         return redirect('/software-developer')->with('success', 'Software developer updated!');
     }
 
@@ -115,8 +117,9 @@ class Software_developerController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('has_application_order')->where('fk_Software_developerid_Software_developer',$id)->delete();
-        DB::table('software_developer')->where('id_Software_developer',$id)->delete();
+        DB::delete('delete from has_web_application_order where fk_Software_developerid_Software_developer = ?', [$id]);
+        DB::delete('delete from has_application_order where fk_Software_developerid_Software_developer = ?', [$id]);
+        DB::delete('delete from software_developer where id_Software_developer = ?', [$id]);
         return redirect('/software-developer')->with('success', 'Software developer deleted!');
     }
 }

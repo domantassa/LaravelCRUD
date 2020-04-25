@@ -77,9 +77,7 @@ class OfficeController extends Controller
             'Establishment_year'=>'required',
             'fk_Cityid_City'=>'required',
         ]);
-        DB::table('office')
-        ->where('id_Office', $id)
-        ->update(['NAME' => $request->NAME, 'Address' => $request->Address, 'Population' => $request->Population, 'Establishment_year' => $request->Establishment_year, 'fk_Cityid_City' => $request->fk_Cityid_City]);
+        DB::update('update office set NAME = ?, Address = ?, Population = ?, Establishment_year = ? where id_Office = ?', [$request->NAME, $request->Address, $request->Population, $request->Establishment_year, $id]);
         return redirect('/office')->with('success', 'Record about office updated!');
     }
 
@@ -91,7 +89,7 @@ class OfficeController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('office')->where('id_Office',$id)->delete();
+        DB::delete('delete from office where id_Office = ?', [$id]);
         return redirect('/office')->with('success', 'Record about office deleted!');
     }
 }
