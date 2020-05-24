@@ -81,6 +81,13 @@ input[type=checkbox] { width: auto }
     font-size:65px;
 }
 
+.text-align-center{
+    text-align: center;
+}
+
+.darker2 {
+    background: rgb(236, 234, 234);
+}
 
 .nav-item1 {
     animation: createBox 0.55s;

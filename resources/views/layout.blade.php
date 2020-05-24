@@ -51,6 +51,7 @@
           <a class="dropdown-item" href="/client/create">Add new</a>
         </div>
       </li>
+      
       <li class="nav-item dropdown nav-item3">
         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Application orders
@@ -77,6 +78,11 @@
           <a class="dropdown-item" href="/office">List</a>
           <a class="dropdown-item" href="/office/create">Add new</a>
         </div>
+      </li>
+      <li class="nav-item nav-item3">
+        <a class="nav-link " href="/results">
+        Results
+        </a>
       </li>
     </ul>
   </div>

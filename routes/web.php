@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'ClientController@index');
+Route::get('/form', 'ClientController@index');
+Route::get('/results', 'ClientController@results')->name('results');
+Route::post('/results', 'ClientController@resultsData')->name('client.resultsData');
+Route::get('/results/data', 'ClientController@results')->name('results.data');
 
 Route::resource('client', 'ClientController');
 Route::resource('city', 'CityController');
